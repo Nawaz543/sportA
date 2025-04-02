@@ -1,12 +1,12 @@
 Group ->   SixSense Technophile
 <br>
 Authors :<br>
- <pre>Md Shahnawaz Perwez<br>
- <pre>Raghunath Murmu<br>
- <pre>Roshan Kumar Pandey<br>
- <pre>Sankar <br>
- <pre>Rahul Hansda<br>
- <pre>Shivdayal Hembram<br>
+ &nbsp;Md Shahnawaz Perwez<br>
+ &nbsp;Raghunath Murmu<br>
+ &nbsp;Roshan Kumar Pandey<br>
+ &nbsp;Sankar <br>
+ &nbsp;Rahul Hansda<br>
+ &nbsp;Shivdayal Hembram<br>
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
