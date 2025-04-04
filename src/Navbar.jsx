@@ -2,13 +2,7 @@ import { useState } from "react";
 import { Sun, Moon, User, LogIn } from "lucide-react";
 import "./Navbar.css";
 
-export default function Navbar({onLoginClick}) {
-  const [darkMode, setDarkMode] = useState(false);
-
-  const toggleDarkMode = () => {
-    setDarkMode((prevMode) => !prevMode);
-    document.body.classList.toggle("dark-mode", !darkMode);
-  };
+export default function Navbar({onLoginClick,onRoomClick,toggleDarkMode,darkMode}) {
 
   return (
     <div className={`navbar-container ${darkMode ? "dark" : ""}`}>
@@ -20,7 +14,7 @@ export default function Navbar({onLoginClick}) {
             {darkMode ? <Sun /> : <Moon />}
           </button>
           <button onClick={onLoginClick} className="nav-btn">Login</button>
-          <button className="nav-btn">Create/Join Room</button>
+          <button onClick={onRoomClick} className="nav-btn">Create/Join Room</button>
           <button className="nav-btn">
             <User />
           </button>
