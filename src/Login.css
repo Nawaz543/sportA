@@ -61,8 +61,31 @@
     cursor: pointer;
   }
 
-  /* dark mode */
-  .dark-mode {
-    background-color: #121212;
-    color: white;
-  }
+/* Default login box */
+.login-box {
+  background-color: #f9f9f9;
+  color: #222;
+  padding: 2rem;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+/* Dark mode for login box only */
+.login-box.dark-mode {
+  background-color: #1e1e1e;
+  color: #f0f0f0;
+  border: 1px solid #555;
+}
+
+/* Inputs and buttons inside login box */
+.login-box.dark-mode .input-box {
+  background-color: #333;
+  color: white;
+  border: 1px solid #777;
+}
+
+.login-box.dark-mode .login-btn,
+.login-box.dark-mode .close-btn {
+  background-color: #444;
+  color: white;
+}

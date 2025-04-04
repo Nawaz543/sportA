@@ -4,7 +4,7 @@ import "./Login.css";
 export default function Login({ onClose }) {
   return (
     <div className="overlay">
-      <div className="login-box">
+      <div className="login-box" id="login-box">
         <h2>Login</h2>
         <input type="email" placeholder="Email" className="input-box" />
         <input type="password" placeholder="Password" className="input-box" />
