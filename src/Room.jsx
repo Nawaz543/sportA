@@ -4,7 +4,7 @@ import "./Room.css"; // Import CSS file
 export default function Room({ onBack }) {
   const [isCreateRoom, setIsCreateRoom] = useState(false); // Toggle between Join/Create Room
   return (
-    <div className="room-container">
+    <div className="room-container" id="room-container">
       {/* Header with Navigation */}
       <div className="room-header">
         <button className="back-button" onClick={onBack}>⬅ Back</button>
@@ -34,16 +34,16 @@ export default function Room({ onBack }) {
           <h2>Create New Room</h2>
           <form className="room-form">
             <div className="image-upload">
-              <label>Add Banner:</label>
+              <label id="label">Add Banner:</label>
               <input type="file" accept="image/*" />
-              <label>Add Logo:</label>
+              <label id="label">Add Logo:</label>
               <input type="file" accept="image/*" />
             </div>
             <input type="text" placeholder="Input Room Name*" required />
             <input type="text" placeholder="Enter Organizer Name*" required />
             <input type="email" placeholder="Enter Organizer Email*" required />
             <input type="tel" placeholder="Enter Organizer No.*" required />
-            <label>Match Dates:</label>
+            <label id="label">Match Dates:</label>
             <input type="date" required />
             <input type="date" required />
             <input type="text" placeholder="Enter City*" required />

@@ -20,8 +20,8 @@ function App(){
   useEffect(() => {
     // Only target the login box itself
     const loginBox = document.getElementById("login-box");
-    
-    if (loginBox) {
+  
+    if (loginBox ) {
       if (darkMode) {
         loginBox.classList.add("dark-mode");
       } else {
@@ -29,6 +29,20 @@ function App(){
       }
     }
   }, [darkMode, showLogin]);
+
+  // Use useEffect to change Room container class when darkMode changes
+  useEffect(() => {
+    // Only target the room container itself
+    const RoomBox = document.getElementById("room-container");
+  
+    if (RoomBox ) {
+      if (darkMode) {
+        RoomBox.classList.add("dark-mode");
+      } else {
+        RoomBox.classList.remove("dark-mode");
+      }
+    }
+  }, [darkMode, showRoom]);
   
   
 

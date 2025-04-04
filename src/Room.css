@@ -5,8 +5,8 @@
     margin: auto;
     overflow: hidden;
     position: relative;
-    background: #121212;
-    color: white;
+    background: white;
+    color: #121212;
     padding: 20px;
     border-radius: 10px;
   }
@@ -24,16 +24,16 @@
   }
   .back-button, .toggle-screen {
     background: none;
-    color: white;
-    border: 1px solid white;
+    color: #121212;
+    border: 1px solid #121212;
     padding: 8px 12px;
     cursor: pointer;
     border-radius: 5px;
   }
   
   .back-button:hover, .toggle-screen:hover {
-    background: white;
-    color: black;
+    background: black;
+    color: white;
   }
   
   /* Sliding effect */
@@ -61,10 +61,10 @@
     width: 30%;
     margin-left: 20px;
     padding: 10px;
-    border: 1px solid #666;
+    border: 1px solid #b49e9e;
     border-radius: 5px;
-    background: #222;
-    color: white;
+    background: white;
+    color: #121212;
   }
  
   .room-form label {
@@ -79,7 +79,7 @@
     margin: 15px;
     margin-left: 20px;
     background: #007bff;
-    color: white;
+    color: black;
     border: none;
     cursor: pointer;
     border-radius: 5px;
@@ -112,7 +112,9 @@
     flex-wrap: wrap;
     gap: 10px;
   }
-  
+  #label{
+    color: black;
+  }
   .game-button {
     padding: 8px 12px;
     background: #444;
@@ -152,8 +154,8 @@
     max-width: 900px;
     overflow: hidden;
     position: relative;
-    background: #121212;
-    color: white;
+    background: white;
+    color: #121212;
     padding: 20px;
     border-radius: 10px;
   }
@@ -213,7 +215,61 @@
   }
   
   /* Dark mode styles */
-  .dark-mode {
+  /* .dark-mode {
     background-color: #121212;
     color: white;
   }
+
+  .back-button, .toggle-screen {
+    background-color: #e7e6e6;
+  }
+
+  .back-button:hover, .toggle-screen:hover {
+    background: rgb(255, 255, 255);
+    color: black;
+  }
+  .room-form input {
+    background-color: #504f4f;
+    color:#ffffff ;
+  }
+
+  #label{
+    color: white;
+  }
+  .games-container {
+    background-color: #121212;
+  } */
+
+  /* Dark mode for login box only */
+.room-container.dark-mode {
+  background-color: #1e1e1e;
+  color: #f0f0f0;
+  border: 1px solid #555;
+}
+
+/* Inputs and buttons inside login box */
+.room-container.dark-mode .input-box {
+  background-color: #333;
+  color: white;
+  border: 1px solid #777;
+}
+
+.room-container.dark-mode .back-button,
+.room-container.dark-mode .toggle-screen {
+  background-color: #444;
+  color: white;
+}
+
+.room-container.dark-mode .back-button:hover,
+.room-container.dark-mode .toggle-screen:hover {
+  background-color: #131212;
+  color: white;
+}
+
+.room-container.dark-mode #label{
+  color: white;
+}
+
+.room-container.dark-mode .games-container {
+  background-color: #1e1e1e;
+}
