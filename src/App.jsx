@@ -3,13 +3,21 @@ import { useState,useEffect } from "react";
 import Navbar from "./Navbar";
 const Login = React.lazy(()=>(import ("./Login")));
 const Room = React.lazy(()=>(import ("./Room")));
+const Profile = React.lazy(()=>(import ("./Profile")));
 
 function App(){
   const [showLogin, setShowLogin] = useState(false); // state to control login
   const [showRoom, setShowRoom] = useState(false); // State to control Create/join room
   const [activeIndex, setActiveIndex] = useState(0); // state to control status of each elements in navbar
   const [darkMode, setDarkMode] = useState(false);
-  
+  const [showProfile, setShowProfile] = useState(false);
+  const user = {
+   name: "John Doe",
+   email: "john@example.com",
+   photoURL: "", // if empty, shows add icon
+   profileComplete: true,
+  };
+
    // Toggle dark mode
    const toggleDarkMode = () => {
     setDarkMode((prevMode) => !prevMode);
@@ -57,6 +65,10 @@ function App(){
           {setShowRoom(true);
             setActiveIndex(2);}
         }
+        onProfileClick={() => 
+          {setShowProfile(true);
+            setActiveIndex(3);}
+        }
         //set dark/light mode
         toggleDarkMode ={ () => 
             {setDarkMode((prevMode) => !prevMode);
@@ -74,6 +86,11 @@ function App(){
         {setShowRoom(false)
           setActiveIndex(0);}
       } />}
+      {/* profile */}
+      {activeIndex==3 && showProfile && <Profile user={user} onBack={() => 
+        {setShowProfile(false);
+          setActiveIndex(0); } 
+      }/>}
   </>
   
 }
