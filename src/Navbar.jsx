@@ -23,7 +23,7 @@ export default function Navbar({onLoginClick,onRoomClick,onProfileClick,toggleDa
       
       {/* Second Navbar */}
       <nav className="second-navbar">
-        {['Home', 'About', 'Announcements', 'Live Match', 'Upcoming Match', 'Scoreboard'].map((item) => (
+        {['Home', 'About', 'Announcements', 'Live Match', 'Upcoming Match', 'Scoreboard', 'Room'].map((item) => (
           <button key={item} className="nav-link">{item}</button>
         ))}
       </nav>
