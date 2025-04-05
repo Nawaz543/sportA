@@ -248,7 +248,7 @@
 }
 
 /* Inputs and buttons inside login box */
-.room-container.dark-mode .input-box {
+.room-container.dark-mode input {
   background-color: #333;
   color: white;
   border: 1px solid #777;
