@@ -76,6 +76,9 @@ function App(){
             document.body.classList.toggle("dark-mode", !darkMode);}
         }
       />
+        {/* home -> massage */}
+        <Massage key={darkMode ? 'dark' : 'light'} />
+        
       {/* login */}
      { activeIndex==1 && showLogin && <Login onClose={() => 
         {setShowLogin(false)
@@ -92,8 +95,7 @@ function App(){
         {setShowProfile(false);
           setActiveIndex(0); } 
       }/>}
-      {/* home -> massage */}
-      <Massage key={darkMode ? 'dark' : 'light'} />
+    
 
 
   </>
