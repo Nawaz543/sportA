@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Orbitron&family=Playfair+Display&display=swap');
+
+.message-container {
+    display: flex;
+    flex-direction: column;
+    height: 50vh;
+    width: 100%;
+    padding: 1rem;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    background-color: #ccc;
+  }
+  
+  .top-banner {
+    width: 100%;
+    height: 38%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 4rem;
+    font-weight: bold;
+    overflow: hidden;
+    position: relative;
+    font-family: 'Orbitron', sans-serif;
+  }
+  
+  .bottom-section {
+    display: flex;
+    width: 100%;
+    height: 55%;
+  }
+  
+  .left-block,
+  .right-block {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.8rem;
+    font-weight: 500;
+    overflow: hidden;
+    position: relative;
+    font-family: 'Playfair Display', serif;
+  }
+  
+  .left-block {
+    border-right: 2px solid #000000; /* This creates the vertical line */
+  }
+  
+  /* Text Animation */
+  .fade-text {
+    position: absolute;
+    transition: all 0.5s ease-in-out;
+  }
+  
+  .fade-in-up {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .fade-out-up {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .top-banner {
+      font-size: 2.8rem;
+    }
+    .left-block,
+    .right-block {
+      font-size: 1.6rem;
+    }
+    .bottom-section {
+      flex-direction: column;
+      height: 60%;
+    }
+    .left-block,
+    .right-block {
+      width: 100%;
+      height: 28%;
+    }
+    .message-container {
+        height: 35vh;
+    }
+  }
+
+  @media (max-width: 501px) {
+    .top-banner {
+      font-size: 2rem;
+      height: 22%;
+    }
+    .left-block,
+    .right-block {
+      font-size: 1.3rem;
+      width: 100%;
+      height: 50%;
+    }
+    
+    .bottom-section {
+        height: 60%;
+      }
+  }
+
+  @media (max-width: 340px) {
+    .top-banner {
+      height: 39%;
+    }
+    .message-container {
+        height: 35vh;
+    }
+}
+
+/* dark mode */
+body.dark-mode .message-container{
+    background-color: #232330;
+}
+body.dark-mode .left-block {
+    border-right: 2px solid #ada9a9; /* This creates the vertical line */
+  }

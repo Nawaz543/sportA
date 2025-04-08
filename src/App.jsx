@@ -4,6 +4,7 @@ import Navbar from "./Navbar";
 const Login = React.lazy(()=>(import ("./Login")));
 const Room = React.lazy(()=>(import ("./Room")));
 const Profile = React.lazy(()=>(import ("./Profile")));
+const Massage = React.lazy(()=>(import ("./home/Massage")));
 
 function App(){
   const [showLogin, setShowLogin] = useState(false); // state to control login
@@ -91,6 +92,10 @@ function App(){
         {setShowProfile(false);
           setActiveIndex(0); } 
       }/>}
+      {/* home -> massage */}
+      <Massage key={darkMode ? 'dark' : 'light'} />
+
+
   </>
   
 }
