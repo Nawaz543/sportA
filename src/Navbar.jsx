@@ -1,11 +1,7 @@
-import { useState } from "react";
-// import { Sun, Moon, User, LogIn } from "lucide-react";
 import React, { lazy, Suspense } from 'react';
-
 const Sun = lazy(() => import('lucide-react').then(module => ({ default: module.Sun })));
 const Moon = lazy(() => import('lucide-react').then(module => ({ default: module.Moon })));
 const User = lazy(() => import('lucide-react').then(module => ({ default: module.User })));
-
 import "./Navbar.css";
 
 export default function Navbar({onLoginClick,onRoomClick,onProfileClick, onAboutClick,toggleDarkMode,}) {

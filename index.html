@@ -2,7 +2,11 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <!-- Preload Google Fonts lazily -->
+      <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Orbitron&family=Playfair+Display&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+      <noscript>
+       <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Orbitron&family=Playfair+Display&display=swap">
+      </noscript>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SportA</title>
   </head>

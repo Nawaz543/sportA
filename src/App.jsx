@@ -1,4 +1,4 @@
-import React,{ lazy, Suspense }  from "react";
+import React  from "react";
 import { useState,useEffect } from "react";
 
 const Navbar = React.lazy(()=>(import ("./Navbar")));

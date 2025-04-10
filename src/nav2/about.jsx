@@ -1,6 +1,5 @@
 import React from "react";
 import "./About.css";
-import {ArrowLeft} from "lucide-react";
 const About = ({onBack}) => {
   return (
     <div className="about-container">
