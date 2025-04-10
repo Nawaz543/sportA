@@ -1,9 +1,11 @@
-import React from "react";
+import React,{ lazy, Suspense }  from "react";
 import { useState,useEffect } from "react";
-import Navbar from "./Navbar";
+
+const Navbar = React.lazy(()=>(import ("./Navbar")));
 const Login = React.lazy(()=>(import ("./Login")));
 const Room = React.lazy(()=>(import ("./Room")));
 const Profile = React.lazy(()=>(import ("./Profile")));
+const About = React.lazy(()=>(import ("./nav2/about")));
 const Massage = React.lazy(()=>(import ("./home/Massage")));
 
 function App(){
@@ -12,6 +14,7 @@ function App(){
   const [activeIndex, setActiveIndex] = useState(0); // state to control status of each elements in navbar
   const [darkMode, setDarkMode] = useState(false);
   const [showProfile, setShowProfile] = useState(false);
+  const [showAbout, setShowAbout] = useState(false);
   const user = {
    name: "John Doe",
    email: "john@example.com",
@@ -55,7 +58,7 @@ function App(){
   
   
 
-  return <>
+  return <> 
       {/* Navbar */}
      <Navbar 
         onLoginClick={() => 
@@ -70,6 +73,11 @@ function App(){
           {setShowProfile(true);
             setActiveIndex(3);}
         }
+        onAboutClick={() => 
+          {setShowAbout(true);
+            setActiveIndex(4);
+            }
+        }
         //set dark/light mode
         toggleDarkMode ={ () => 
             {setDarkMode((prevMode) => !prevMode);
@@ -77,7 +85,7 @@ function App(){
         }
       />
         {/* home -> massage */}
-        <Massage key={darkMode ? 'dark' : 'light'} />
+        { activeIndex!=2 && activeIndex!=4 && <Massage key={darkMode ? 'dark' : 'light'} />}
         
       {/* login */}
      { activeIndex==1 && showLogin && <Login onClose={() => 
@@ -96,8 +104,10 @@ function App(){
           setActiveIndex(0); } 
       }/>}
     
-
-
+    { activeIndex==4 && showAbout && <About  onBack={() => 
+        {setShowAbout(false);
+          setActiveIndex(0); } 
+      } />}
   </>
   
 }
