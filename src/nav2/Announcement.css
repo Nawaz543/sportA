@@ -95,6 +95,7 @@
   .announcement-section {
     padding: 15px;
     border-radius: 12px;
+    border-left: 4px solid var(--accent);
     background-color: rgba(0, 188, 212, 0.05);
     backdrop-filter: blur(5px);
     transition: background-color 0.3s ease;
@@ -112,6 +113,11 @@
   
   .announcement-section li {
     margin-bottom: 8px;
+  }
+
+  .announcement-section:hover {
+    transform: translateY(-5px);
+    transition: transform 0.3s ease, background 0.3s, border-left 0.3s;
   }
   
   /* Responsive */
