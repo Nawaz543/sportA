@@ -81,7 +81,7 @@
     background-color: rgba(0, 188, 212, 0.1);
   }
   
-  body.dark-mode ul.dropdown li{
+  body.dark-mode ul.dropdown {
     background-color: #1e1e1ede;
     color: var(--text-dark);
     border-color: #444;
@@ -180,7 +180,6 @@
   }
   
   body.dark-mode .dropdown li {
-    background-color: var(--card-bg-dark);
     color: var(--text-dark); 
     border-color: #444;
   }
