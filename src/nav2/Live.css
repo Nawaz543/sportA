@@ -1,0 +1,191 @@
+:root {
+    --bg-light: #f0f0f0;
+    --text-light: #1a1a1a;
+    --bg-dark: #121212;
+    --text-dark: #f5f5f5;
+    --accent: #00bcd4;
+    --card-bg-light: #ffffff;
+    --card-bg-dark: #1e1e1e;
+  }
+  
+  body.dark-mode {
+    background-color: var(--bg-dark);
+    color: var(--text-dark);
+  }
+  
+  .live-match-container {
+    max-width: 1000px;
+    margin: auto;
+    padding: 20px;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  .top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .top-bar h1 {
+    font-size: 2rem;
+    color: var(--accent);
+  }
+  
+  .back-button {
+    padding: 8px 16px;
+    background-color: var(--accent);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  
+  .room-selector {
+    margin: 20px 0;
+    position: relative;
+  }
+  
+  .room-label {
+    font-weight: bold;
+    cursor: pointer;
+    padding: 10px;
+    background-color: rgba(0, 188, 212, 0.1);
+    border-radius: 6px;
+    display: inline-block;
+  }
+  
+  .selected-room {
+    margin-left: 8px;
+    color: var(--accent);
+  }
+  
+  .dropdown {
+    list-style: none;
+    margin-top: 5px;
+    padding: 0;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background-color: #ffffffd5;
+    position: absolute;
+    z-index: 10;
+    width: 200px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+  
+  .dropdown li {
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  .dropdown li:hover {
+    background-color: rgba(0, 188, 212, 0.1);
+  }
+  
+  body.dark-mode ul.dropdown li{
+    background-color: #1e1e1ede;
+    color: var(--text-dark);
+    border-color: #444;
+  }
+  
+  /* Match Cards */
+  .match-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .match-card {
+    display: flex;
+    background-color: var(--card-bg-light);
+    border-radius: 16px;
+    padding: 16px;
+    align-items: flex-start;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+  }
+  
+  .match-card:hover {
+    transform: translateY(-3px);
+  }
+  
+  body.dark-mode .match-card {
+    background-color: var(--card-bg-dark);
+  }
+  
+  .match-logo {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    margin-right: 20px;
+  }
+  
+  .match-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  
+  .match-name {
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+  
+  .team-name,
+  .organizer,
+  .ground,
+  .start-time {
+    font-size: 0.95rem;
+    color: gray;
+  }
+  
+  .card-footer {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 12px;
+    margin-top: 8px;
+  }
+  
+  .card-button {
+    padding: 6px 12px;
+    background-color: var(--accent);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .card-button:hover {
+    background-color: #0097a7;
+  }
+  
+  /* Responsive */
+  @media (max-width: 600px) {
+    .match-card {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+  
+    .match-logo {
+      margin: 0 0 12px 0;
+    }
+  
+    .card-footer {
+      flex-direction: column;
+      gap: 8px;
+    }
+  }
+  
+  body.dark-mode .dropdown li {
+    background-color: var(--card-bg-dark);
+    color: var(--text-dark); 
+    border-color: #444;
+  }
+  
+  body.dark-mode .dropdown li:hover {
+    background-color: rgba(0, 188, 212, 0.2);
+    color: var(--text-dark); /* Ensure hover keeps light text */
+  }

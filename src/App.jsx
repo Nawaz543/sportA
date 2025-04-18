@@ -1,6 +1,7 @@
 import React  from "react";
 import { useState,useEffect } from "react";
 import Announcement from "./nav2/Announcement";
+import Live from "./nav2/Live";
 
 const Navbar = React.lazy(()=>(import ("./Navbar")));
 const Login = React.lazy(()=>(import ("./Login")));
@@ -17,6 +18,7 @@ function App(){
   const [showProfile, setShowProfile] = useState(false);
   const [showAbout, setShowAbout] = useState(false);
   const [showAnnouncement , setShowAnnouncement] = useState(false);
+  const [showLive , setShowLive] = useState(false);
   const user = {
    name: "John Doe",
    email: "john@example.com",
@@ -85,6 +87,11 @@ function App(){
             setActiveIndex(5);
             }
         }
+        onLiveClick={() => 
+          {setShowLive(true);
+            setActiveIndex(6);
+            }
+        }
         //set dark/light mode
         toggleDarkMode ={ () => 
             {setDarkMode((prevMode) => !prevMode);
@@ -92,7 +99,10 @@ function App(){
         }
       />
         {/* home -> massage */}
-        { activeIndex==0  && <Massage key={darkMode ? 'dark' : 'light'} />}
+        {(activeIndex === 0 || activeIndex === 1 || activeIndex === 3) && (
+           <Massage key={darkMode ? 'dark' : 'light'} />
+          )}
+
         
       {/* login */}
      { activeIndex==1 && showLogin && <Login onClose={() => 
@@ -118,6 +128,11 @@ function App(){
       {/* announcement */}
       { activeIndex==5 && showAnnouncement && <Announcement  onBack={() => 
         {setShowAnnouncement(false);
+          setActiveIndex(0); } 
+      } />}
+      {/* Live */}
+      { activeIndex==6 && showLive && <Live  onBack={() => 
+        {setShowLive(false);
           setActiveIndex(0); } 
       } />}
   </>

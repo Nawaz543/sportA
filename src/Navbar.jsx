@@ -4,7 +4,7 @@ const Moon = lazy(() => import('lucide-react').then(module => ({ default: module
 const User = lazy(() => import('lucide-react').then(module => ({ default: module.User })));
 import "./Navbar.css";
 
-export default function Navbar({onLoginClick,onRoomClick,onProfileClick, onAboutClick, onAnnouncementClick,toggleDarkMode,}) {
+export default function Navbar({onLoginClick,onRoomClick,onProfileClick, onAboutClick, onAnnouncementClick, onLiveClick,toggleDarkMode,}) {
 let darkMode=false
 const mode=document.body.classList;
 if (mode=='dark-mode'){
@@ -38,7 +38,7 @@ if (mode=='dark-mode'){
         <button key="Home" className="nav-link" onClick={onAboutClick}>Home</button>
         <button key="About" className="nav-link" onClick={onAboutClick}>About</button>
         <button key="Announcements" className="nav-link" onClick={onAnnouncementClick}>Announcements</button>
-        <button key="Live-Match" className="nav-link" onClick={onAboutClick}>Live Match</button>
+        <button key="Live-Match" className="nav-link" onClick={onLiveClick}>Live Match</button>
         <button key="Upcoming-Match" className="nav-link" onClick={onAboutClick}>Upcoming Match</button>
         <button key="Scoreboard" className="nav-link" onClick={onAboutClick}>Scoreboard</button>
         <button key="Room" className="nav-link" onClick={onAboutClick}>Room</button>
