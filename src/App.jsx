@@ -2,6 +2,8 @@ import React  from "react";
 import { useState,useEffect } from "react";
 import Announcement from "./nav2/Announcement";
 import Live from "./nav2/Live";
+import Upcoming from "./nav2/Upcoming";
+import Score from "./nav2/Score";
 
 const Navbar = React.lazy(()=>(import ("./Navbar")));
 const Login = React.lazy(()=>(import ("./Login")));
@@ -19,6 +21,8 @@ function App(){
   const [showAbout, setShowAbout] = useState(false);
   const [showAnnouncement , setShowAnnouncement] = useState(false);
   const [showLive , setShowLive] = useState(false);
+  const [showUpcoming , setShowUpcoming] = useState(false);
+  const [showScore , setShowScore] = useState(false);
   const user = {
    name: "John Doe",
    email: "john@example.com",
@@ -92,6 +96,16 @@ function App(){
             setActiveIndex(6);
             }
         }
+        onUpcomingClick={() => 
+          {setShowUpcoming(true);
+            setActiveIndex(7);
+            }
+        }
+        onScoreClick={() => 
+          {setShowScore(true);
+            setActiveIndex(8);
+            }
+        }
         //set dark/light mode
         toggleDarkMode ={ () => 
             {setDarkMode((prevMode) => !prevMode);
@@ -133,6 +147,16 @@ function App(){
       {/* Live */}
       { activeIndex==6 && showLive && <Live  onBack={() => 
         {setShowLive(false);
+          setActiveIndex(0); } 
+      } />}
+      {/* Upcoming */}
+      { activeIndex==7 && showUpcoming && <Upcoming onBack={() => 
+        {setShowUpcoming(false);
+          setActiveIndex(0); } 
+      } />}
+      {/* Scoreboard */}
+      { activeIndex==8 && showScore && <Score onBack={() => 
+        {setShowScore(false);
           setActiveIndex(0); } 
       } />}
   </>

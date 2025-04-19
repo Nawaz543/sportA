@@ -1,0 +1,222 @@
+/* Scoreboard.css */
+
+:root {
+    --bg-light: #f9f9f9;
+    --bg-dark: #121212;
+    --text-light: #000000;
+    --text-dark: #ffffff;
+    --accent-light: #00bcd4;
+    --accent-dark: #00e5ff;
+    --card-bg-light: #ffffff;
+    --card-bg-dark: #1f1f1f;
+    --border-light: #ddd;
+    --border-dark: #333;
+  }
+  
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  .scoreboard-container {
+    padding: 1rem;
+    background-color: var(--bg-light);
+    color: var(--text-light);
+    transition: all 0.3s ease-in-out;
+  }
+  
+  body.dark-mode .scoreboard-container {
+    background-color: var(--bg-dark);
+    color: var(--text-dark);
+  }
+  
+  .header-section {
+    margin-bottom: 1.5rem;
+  }
+  
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .back-button {
+    background: var(--accent-light);
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  body.dark-mode .back-button {
+    background: var(--accent-dark);
+  }
+  
+  .match-selector {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+  
+  .match-btn {
+    padding: 0.4rem 1rem;
+    border-radius: 8px;
+    border: 1px solid var(--border-light);
+    background-color: transparent;
+    color: inherit;
+    cursor: pointer;
+  }
+  
+  body.dark-mode .match-btn {
+    border-color: var(--border-dark);
+  }
+  
+  .match-btn.active {
+    background-color: var(--accent-light);
+    color: #fff;
+    font-weight: bold;
+  }
+  
+  body.dark-mode .match-btn.active {
+    background-color: var(--accent-dark);
+  }
+  
+  .cards-section {
+    display: grid;
+    gap: 1.5rem;
+  }
+  
+  .score-card {
+    background-color: var(--card-bg-light);
+    border-radius: 1rem;
+    padding: 1rem;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    color: var(--text-light);
+    transition: all 0.3s ease-in-out;
+  }
+  
+  body.dark-mode .score-card {
+    background-color: var(--card-bg-dark);
+    color: var(--text-dark);
+  }
+  
+  .logo-banner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .logo-img {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .banner-img {
+    width: 100px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+  
+  .score-details {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  
+  .left-section {
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+  
+  .right-section {
+    flex: 6;
+  }
+  
+  .action-buttons button {
+    margin-right: 0.5rem;
+    margin-top: 0.5rem;
+    background-color: var(--accent-light);
+    border: none;
+    color: #fff;
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  
+  body.dark-mode .action-buttons button {
+    background-color: var(--accent-dark);
+  }
+  
+  .score-toggle {
+    margin-top: 1rem;
+    background: #ececec;
+    border-radius: 10px;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  body.dark-mode .score-toggle {
+    background: #2e2e2e;
+  }
+  
+  .team-box {
+    padding: 0.5rem;
+    border-radius: 8px;
+    background-color: #f0f0f0;
+    display: none;
+    color: #000;
+  }
+  
+  body.dark-mode .team-box {
+    background-color: #444;
+    color: #fff;
+  }
+  
+  .team-box.active {
+    display: block;
+  }
+  
+  .toggle-btn {
+    background-color: var(--accent-light);
+    border: none;
+    color: #fff;
+    padding: 0.3rem 0.6rem;
+    border-radius: 5px;
+    cursor: pointer;
+    align-self: flex-end;
+  }
+  
+  body.dark-mode .toggle-btn {
+    background-color: var(--accent-dark);
+  }
+  
+  .score-detail {
+    font-size: 1rem;
+    font-weight: 500;
+    margin-top: 0.5rem;
+  }
+  
+  @media (max-width: 768px) {
+    .score-details {
+      flex-direction: column;
+    }
+  
+    .logo-banner {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+  
+    .score-toggle {
+      flex-direction: column;
+    }
+  }
+  
