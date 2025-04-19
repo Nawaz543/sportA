@@ -61,7 +61,7 @@ const roomData = matchTypes.flatMap((type, idx) => ([
   }
 ]));
 
-const Scoreboard = () => {
+const Scoreboard = ({onBack}) => {
   const [selectedMatch, setSelectedMatch] = useState('Cricket');
   const [activeTeams, setActiveTeams] = useState({});
 
@@ -77,7 +77,7 @@ const Scoreboard = () => {
       <div className="header-section">
         <div className="header-top">
           <h1>Scoreboard</h1>
-          <button className="back-button" onClick={() => window.history.back()}>Back</button>
+          <button className="back-button" onClick={onBack}>Back</button>
         </div>
         <div className="match-selector">
           {matchTypes.map((match) => (
