@@ -4,7 +4,7 @@ const Moon = lazy(() => import('lucide-react').then(module => ({ default: module
 const User = lazy(() => import('lucide-react').then(module => ({ default: module.User })));
 import "./Navbar.css";
 
-export default function Navbar({onLoginClick,onRoomClick,onProfileClick, onAboutClick, onAnnouncementClick, onLiveClick, onUpcomingClick,onScoreClick, toggleDarkMode,}) {
+export default function Navbar({onLoginClick,onCreateRoomClick,onProfileClick, onAboutClick, onAnnouncementClick, onLiveClick, onUpcomingClick,onScoreClick, toggleDarkMode,}) {
 let darkMode=false
 const mode=document.body.classList;
 if (mode=='dark-mode'){
@@ -24,7 +24,7 @@ if (mode=='dark-mode'){
               </Suspense>}
           </button>
           <button onClick={onLoginClick} className="nav-btn">Login</button>
-          <button onClick={onRoomClick} className="nav-btn">Create/Join Room</button>
+          <button onClick={onCreateRoomClick} className="nav-btn">Create/Join Room</button>
           <button onClick={onProfileClick}className="nav-btn">
           <Suspense fallback={<span />}>
             <User />

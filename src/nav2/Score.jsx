@@ -61,7 +61,7 @@ const roomData = matchTypes.flatMap((type, idx) => ([
   }
 ]));
 
-const Scoreboard = ({onBack}) => {
+const Scoreboard = ({onBack }) => {
   const [selectedMatch, setSelectedMatch] = useState('Cricket');
   const [activeTeams, setActiveTeams] = useState({});
 

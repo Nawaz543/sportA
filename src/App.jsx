@@ -4,17 +4,18 @@ import Announcement from "./nav2/Announcement";
 import Live from "./nav2/Live";
 import Upcoming from "./nav2/Upcoming";
 import Score from "./nav2/Score";
+import Room from "./nav2/room";
 
 const Navbar = React.lazy(()=>(import ("./Navbar")));
 const Login = React.lazy(()=>(import ("./Login")));
-const Room = React.lazy(()=>(import ("./Room")));
+const CreateRoom = React.lazy(()=>(import ("./CreateRoom")));
 const Profile = React.lazy(()=>(import ("./Profile")));
 const About = React.lazy(()=>(import ("./nav2/about")));
 const Massage = React.lazy(()=>(import ("./home/Massage")));
 
 function App(){
   const [showLogin, setShowLogin] = useState(false); // state to control login
-  const [showRoom, setShowRoom] = useState(false); // State to control Create/join room
+  const [showCreateRoom, setShowCreateRoom] = useState(false); // State to control Create/join room
   const [activeIndex, setActiveIndex] = useState(0); // state to control status of each elements in navbar
   const [darkMode, setDarkMode] = useState(false);
   const [showProfile, setShowProfile] = useState(false);
@@ -23,6 +24,7 @@ function App(){
   const [showLive , setShowLive] = useState(false);
   const [showUpcoming , setShowUpcoming] = useState(false);
   const [showScore , setShowScore] = useState(false);
+  // const [showRoom , setShowRoom] = useState(false);
   const user = {
    name: "John Doe",
    email: "john@example.com",
@@ -62,7 +64,7 @@ function App(){
         RoomBox.classList.remove("dark-mode");
       }
     }
-  }, [darkMode, showRoom]);
+  }, [darkMode, showCreateRoom]);
   
   
 
@@ -73,8 +75,8 @@ function App(){
           {setShowLogin(true);
           setActiveIndex(1);}
         }
-        onRoomClick={() => 
-          {setShowRoom(true);
+        onCreateRoomClick={() => 
+          {setShowCreateRoom(true);
             setActiveIndex(2);}
         }
         onProfileClick={() => 
@@ -106,6 +108,11 @@ function App(){
             setActiveIndex(8);
             }
         }
+        // onRoomClick={() => 
+        //   {setShowRoom(true);
+        //     setActiveIndex(9);
+        //     }
+        // }
         //set dark/light mode
         toggleDarkMode ={ () => 
             {setDarkMode((prevMode) => !prevMode);
@@ -125,8 +132,8 @@ function App(){
      }
       />}
       {/* create/join room */}
-       { activeIndex==2 && showRoom && <Room onBack={() => 
-        {setShowRoom(false)
+       { activeIndex==2 && showCreateRoom && <CreateRoom onBack={() => 
+        {setShowCreateRoom(false)
           setActiveIndex(0);}
       } />}
       {/* profile */}

@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import "./Room.css"; // Import CSS file
+import React, { useState } from "react"; 
+import "./CreateRoom.css"; // Import CSS file
 
 export default function Room({ onBack }) {
   const [isCreateRoom, setIsCreateRoom] = useState(false); // Toggle between Join/Create Room
