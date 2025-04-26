@@ -1,135 +1,190 @@
 import React, { useState } from "react";
-import "./Room.css";
+import "./Room.css"; // Make sure this file exists
 
-const gamesList = ["Cricket", "Football", "Badminton", "Chess", "Carrom", "Kabaddi", "Basketball"];
+const gamesList = [
+  "Cricket",
+  "Football",
+  "Badminton",
+  "Chess",
+  "Carrom",
+  "Kabaddi",
+  "Basketball",
+];
 
-const Room = () => {
-  const [yourRooms, setYourRooms] = useState([
-    {
-      roomNo: "001",
-      roomName: "Champions Hub",
-      organizerName: "John Doe",
-      organizerEmail: "john@example.com",
-      games: {}
-    },
-    {
-      roomNo: "002",
-      roomName: "Legends Arena",
-      organizerName: "Alice Smith",
-      organizerEmail: "alice@example.com",
-      games: {}
-    }
-  ]);
+// Dummy example data
+const initialYourRooms = [
+  {
+    roomNo: "101",
+    roomName: "Champions Arena",
+    organizerName: "John Doe",
+    organizerEmail: "john@example.com",
+    games: {},
+  },
+  {
+    roomNo: "102",
+    roomName: "Legends League",
+    organizerName: "Jane Smith",
+    organizerEmail: "jane@example.com",
+    games: {},
+  },
+];
 
-  const [joinedRooms, setJoinedRooms] = useState([
-    {
-      roomNo: "101",
-      roomName: "Warriors Field",
-      organizerName: "Chris Evans",
-      organizerEmail: "chris@example.com",
-      games: {}
-    },
-    {
-      roomNo: "102",
-      roomName: "Victory Ground",
-      organizerName: "Emma Johnson",
-      organizerEmail: "emma@example.com",
-      games: {}
-    }
-  ]);
+const initialJoinedRooms = [
+  {
+    roomNo: "201",
+    roomName: "Warriors Den",
+    organizerName: "Mike Tyson",
+    organizerEmail: "mike@example.com",
+    games: {Cricket: {
+        date: "2025-05-10",
+        time: "14:30",
+        location: 'ground A',
+      },},
+  },
+  {
+    roomNo: "202",
+    roomName: "Battlefield Zone",
+    organizerName: "Bruce Lee",
+    organizerEmail: "bruce@example.com",
+    games: {},
+  },
+];
+
+const Room = ({onBack}) => {
+  const [yourRooms, setYourRooms] = useState(initialYourRooms);
+  const [joinedRooms, setJoinedRooms] = useState(initialJoinedRooms);
+  const [tempGameData, setTempGameData] = useState({});
+
 
   const handleGameClick = (roomIndex, game) => {
-    const updatedRooms = [...yourRooms];
-    if (!updatedRooms[roomIndex].games[game]) {
-      updatedRooms[roomIndex].games[game] = { date: "", time: "", location: "" };
-    }
-    setYourRooms(updatedRooms);
+    setTempGameData({ roomIndex, game, date: "", time: "", location: "" });
   };
 
-  const handleGameChange = (roomIndex, game, field, value) => {
+  const handleTempChange = (field, value) => {
+    setTempGameData({ ...tempGameData, [field]: value });
+  };
+
+  const handleSubmitGame = () => {
+    const { roomIndex, game, date, time, location } = tempGameData;
+
+    if (!date) {
+      alert("Please select a date before submitting.");
+      return;
+    }
+
     const updatedRooms = [...yourRooms];
-    updatedRooms[roomIndex].games[game][field] = value;
+    updatedRooms[roomIndex].games[game] = { date, time, location };
+
     setYourRooms(updatedRooms);
+    setTempGameData({});
+  };
+
+  const formatDate = (dateStr) => {
+    if (!dateStr) return "";
+    const [year, month, day] = dateStr.split("-");
+    return `${day}/${month}/${year}`;
   };
 
   return (
-    <div className="room-container">
-      <div className="room-header">
+    <div className="room-page">
+      {/* Top Bar */}
+      <div className="top-bar">
         <h2>Rooms</h2>
-        <button className="back-button">Back</button>
+        <button onClick={onBack} className="back-button">Back</button>
       </div>
 
-      <h3>Your Room</h3>
-      {yourRooms.length > 0 ? yourRooms.map((room, index) => (
-        <div className="room-card" key={index}>
-          <p><strong>Room No:</strong> {room.roomNo}</p>
-          <p><strong>Room Name:</strong> {room.roomName}</p>
-          <p><strong>Organizer Name:</strong> {room.organizerName}</p>
-          <p><strong>Organizer Email:</strong> {room.organizerEmail}</p>
+      {/* Your Rooms */}
+      <h3>Your Rooms</h3>
+      {yourRooms.length === 0 ? (
+        <p>No rooms created yet.</p>
+      ) : (
+        yourRooms.map((room, index) => (
+          <div key={index} className="room-card">
+            <p>Room No: {room.roomNo}</p>
+            <p>Room Name: {room.roomName}</p>
+            <p>Organizer Name: {room.organizerName}</p>
+            <p>Organizer Email: {room.organizerEmail}</p>
 
-          <div className="games-section">
-            {gamesList.map((game, gameIndex) => (
-              <div key={gameIndex} className="game-item">
-                {room.games[game] && room.games[game].date ? (
-                  <div className="game-details">
-                    <p><strong>{game}</strong> - {room.games[game].date}, {room.games[game].time}, {room.games[game].location}</p>
-                  </div>
-                ) : (
-                  <button onClick={() => handleGameClick(index, game)}>{game}</button>
-                )}
-
-                {room.games[game] && !room.games[game].date && (
-                  <div className="input-fields">
+            <div className="game-list">
+              {gamesList.map((game, gameIndex) => (
+                tempGameData.roomIndex === index && tempGameData.game === game ? (
+                  <form
+                    key={gameIndex}
+                    onSubmit={(e) => {
+                      e.preventDefault();
+                      handleSubmitGame();
+                    }}
+                    className="game-form"
+                  >
                     <input
                       type="date"
-                      placeholder="Date"
-                      onChange={(e) => handleGameChange(index, game, "date", e.target.value)}
+                      value={tempGameData.date}
+                      onChange={(e) => handleTempChange("date", e.target.value)}
                     />
                     <input
                       type="time"
-                      placeholder="Time"
-                      onChange={(e) => handleGameChange(index, game, "time", e.target.value)}
+                      value={tempGameData.time}
+                      onChange={(e) => handleTempChange("time", e.target.value)}
                     />
                     <input
                       type="text"
                       placeholder="Location"
-                      onChange={(e) => handleGameChange(index, game, "location", e.target.value)}
+                      value={tempGameData.location}
+                      onChange={(e) => handleTempChange("location", e.target.value)}
                     />
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
-
-          <button className="edit-button">Edit Data</button>
-        </div>
-      )) : <p>No rooms created yet.</p>}
-
-      <h3>Joined Room</h3>
-      {joinedRooms.length > 0 ? joinedRooms.map((room, index) => (
-        <div className="room-card" key={index}>
-          <p><strong>Room No:</strong> {room.roomNo}</p>
-          <p><strong>Room Name:</strong> {room.roomName}</p>
-          <p><strong>Organizer Name:</strong> {room.organizerName}</p>
-          <p><strong>Organizer Email:</strong> {room.organizerEmail}</p>
-
-          <div className="games-section">
-            {gamesList.map((game, gameIndex) => (
-              <div key={gameIndex} className="game-item">
-                {room.games[game] && room.games[game].date ? (
-                  <div className="game-details">
-                    <p><strong>{game}</strong> - {room.games[game].date}, {room.games[game].time}, {room.games[game].location}</p>
+                    <button type="submit" className="submit-button">Submit</button>
+                  </form>
+                ) : room.games[game] ? (
+                  <div className="game-details" key={gameIndex}>
+                    <p>
+                      <strong>{game}</strong> - Date: {formatDate(room.games[game].date)}
+                      {room.games[game].time && ` on ${room.games[game].time}`}
+                      {room.games[game].location && ` at ${room.games[game].location}`}
+                    </p>
                   </div>
                 ) : (
-                  <p><strong>{game}</strong> - Not registered</p>
-                )}
-              </div>
-            ))}
-          </div>
+                  <button key={gameIndex} onClick={() => handleGameClick(index, game)}>
+                    {game}
+                  </button>
+                )
+              ))}
+            </div>
 
-          <button className="register-button">Register in Games</button>
-        </div>
-      )) : <p>No rooms joined yet.</p>}
+            <button className="edit-button">Edit Data</button>
+          </div>
+        ))
+      )}
+
+      {/* Joined Rooms */}
+      <h3>Joined Rooms</h3>
+      {joinedRooms.length === 0 ? (
+        <p>No joined rooms yet.</p>
+      ) : (
+        joinedRooms.map((room, index) => (
+          <div key={index} className="room-card">
+            <p>Room No: {room.roomNo}</p>
+            <p>Room Name: {room.roomName}</p>
+            <p>Organizer Name: {room.organizerName}</p>
+            <p>Organizer Email: {room.organizerEmail}</p>
+
+            <div className="game-list">
+              {gamesList.map((game, gameIndex) => (
+                room.games[game] ? (
+                  <div className="game-details" key={gameIndex}>
+                    <p>
+                      <strong>{game}</strong> - Date: {formatDate(room.games[game].date)}
+                      {room.games[game].time && ` on ${room.games[game].time}`}
+                      {room.games[game].location && ` at ${room.games[game].location}`}
+                    </p>
+                  </div>
+                ) : null
+              ))}
+            </div>
+
+            <button className="register-button">Register in Games</button>
+          </div>
+        ))
+      )}
     </div>
   );
 };

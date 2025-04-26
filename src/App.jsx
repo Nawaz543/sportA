@@ -24,7 +24,7 @@ function App(){
   const [showLive , setShowLive] = useState(false);
   const [showUpcoming , setShowUpcoming] = useState(false);
   const [showScore , setShowScore] = useState(false);
-  // const [showRoom , setShowRoom] = useState(false);
+  const [showRoom , setShowRoom] = useState(false);
   const user = {
    name: "John Doe",
    email: "john@example.com",
@@ -108,11 +108,11 @@ function App(){
             setActiveIndex(8);
             }
         }
-        // onRoomClick={() => 
-        //   {setShowRoom(true);
-        //     setActiveIndex(9);
-        //     }
-        // }
+        onRoomClick={() => 
+          {setShowRoom(true);
+            setActiveIndex(9);
+            }
+        }
         //set dark/light mode
         toggleDarkMode ={ () => 
             {setDarkMode((prevMode) => !prevMode);
@@ -164,6 +164,11 @@ function App(){
       {/* Scoreboard */}
       { activeIndex==8 && showScore && <Score onBack={() => 
         {setShowScore(false);
+          setActiveIndex(0); } 
+      } />}
+      {/* Room */}
+      { activeIndex==9 && showRoom && <Room onBack={() => 
+        {setShowRoom(false);
           setActiveIndex(0); } 
       } />}
   </>
